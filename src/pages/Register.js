@@ -12,21 +12,18 @@ const Register = () => {
   });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      await api.post("/auth/register", form);
+  try {
+    await api.post("/auth/register", form);
 
-
-      alert("✅ Registered successfully!");
-
-      navigate("/"); // Redirect to login
-    } catch (error) {
-      console.error("Register Error:", error.response?.data);
-
-      alert(error.response?.data?.message || "❌ Registration failed");
-    }
-  };
+    alert("✅ Registered successfully!");
+    navigate("/");
+  } catch (error) {
+    console.error("Register Error:", error.response?.data);
+    alert(error.response?.data?.message || "❌ Registration failed");
+  }
+};
 
   return (
     <div className="auth-container">

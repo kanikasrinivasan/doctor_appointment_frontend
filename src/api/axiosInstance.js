@@ -1,17 +1,12 @@
-// src/api/axiosInstance.js
-
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://backend-3-l93e.onrender.com", // or your Render URL
+  baseURL: "https://doctor-appointment-backend-2-h7ce.onrender.com/api",
 });
 
-// Automatically attach token to every request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-  if (token) {
-    config.headers["Authorization"] = `Bearer ${token}`;
-  }
+  if (token) config.headers["Authorization"] = `Bearer ${token}`;
   return config;
 });
 
