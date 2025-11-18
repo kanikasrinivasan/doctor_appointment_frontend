@@ -1,0 +1,23 @@
+.doctor-page {
+  padding: 40px;
+}
+.doctor-form input, .doctor-form button {
+  margin: 10px;
+  padding: 10px;
+}
+.doctor-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+.doctor-table th, .doctor-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.delete-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}

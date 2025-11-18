@@ -1,0 +1,32 @@
+.auth-container {
+  width: 360px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  text-align: center;
+}
+.auth-container h2 {
+  color: #0077b6;
+}
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+.auth-container button {
+  background: #0077b6;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.auth-container p span {
+  color: #0077b6;
+  cursor: pointer;
+}

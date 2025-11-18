@@ -1,0 +1,19 @@
+.book-container {
+  padding: 40px;
+  max-width: 600px;
+  margin: auto;
+}
+.book-form input, .book-form select, .book-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+.book-form button {
+  background: #0077b6;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+}

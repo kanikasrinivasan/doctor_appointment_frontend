@@ -1,0 +1,16 @@
+.appointment-container {
+  padding: 40px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+th {
+  background: #0077b6;
+  color: white;
+}

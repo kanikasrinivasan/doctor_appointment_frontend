@@ -1,0 +1,147 @@
+/* DoctorManagement.css */
+
+.doctor-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #f7faff;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.doctor-page h2 {
+  text-align: center;
+  color: #004aad;
+  margin-bottom: 25px;
+}
+
+.doctor-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.doctor-form input {
+  flex: 1 1 45%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.doctor-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.doctor-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.doctor-form button:hover {
+  background: #0056b3;
+}
+
+h3 {
+  color: #222;
+  margin-top: 30px;
+}
+
+.doctor-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.doctor-table th,
+.doctor-table td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.doctor-table th {
+  background: #007bff;
+  color: white;
+}
+
+.doctor-table tr:nth-child(even) {
+  background: #f2f6fc;
+}
+
+.delete-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #d93636;
+}
+.doctor-management {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #f9fafb;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-management h2,
+.doctor-management h3 {
+  text-align: center;
+  color: #333;
+}
+
+.doctor-management form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.doctor-management input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.doctor-management button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.doctor-management button:hover {
+  background-color: #0056b3;
+}
+
+.doctor-management ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.doctor-management li {
+  background: white;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
