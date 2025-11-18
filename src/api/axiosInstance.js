@@ -1,10 +1,12 @@
+// src/api/axiosInstance.js
+
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://backend-3-l93e.onrender.com", // or your Render URL
 });
 
-// AUTO-ADD TOKEN INTO EVERY REQUEST
+// Automatically attach token to every request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
