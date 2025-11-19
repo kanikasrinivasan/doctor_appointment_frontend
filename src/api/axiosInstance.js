@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://doctor-appointment-backend-2-h7ce.onrender.com/api",
+  baseURL: "https://doctor-appointment-backend-3.onrender.com/api",
 });
 
 api.interceptors.request.use((config) => {
