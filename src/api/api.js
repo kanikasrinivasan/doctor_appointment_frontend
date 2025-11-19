@@ -1,7 +1,8 @@
+// src/api/api.js
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://doctor-appointment-backend-3.onrender.com/api",
+  baseURL: process.env.REACT_APP_API_URL || "https://doctor-appointment-backend-wsfg.onrender.com/api",
 });
 
 api.interceptors.request.use((config) => {

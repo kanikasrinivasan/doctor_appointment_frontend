@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import api from "../api/axiosInstance";
+import api from "../api/api";
 import "../styles/AppointmentList.css";
+
 
 const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
