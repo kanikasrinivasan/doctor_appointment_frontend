@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import api from "../api/api";
 import "../styles/AppointmentList.css";
 
-
 const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
 
@@ -12,22 +11,34 @@ const AppointmentList = () => {
 
   const fetchAppointments = async () => {
     try {
-      const token = localStorage.getItem("token");
       const user = JSON.parse(localStorage.getItem("user"));
 
-      if (!user || !user.id) {
+      if (!user?._id) {
         alert("❌ You must login again.");
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.location.href = "/login";
         return;
       }
 
-      const { data } = await api.get(`/appointments/user/${user.id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
+      // Use API instance; token auto-attached via interceptor
+      const { data } = await api.get(`/appointments/user/${user._id}`);
       setAppointments(data);
     } catch (error) {
-      console.error("❌ Fetch appointments error:", error.response?.data || error.message);
-      alert("❌ Failed to fetch appointments");
+      console.error(
+        "❌ Fetch appointments error:",
+        error.response?.data || error.message
+      );
+
+      if (error.response?.status === 401) {
+        // Token expired → logout
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        alert("❌ Session expired. Please login again.");
+        window.location.href = "/login";
+      } else {
+        alert("❌ Failed to fetch appointments");
+      }
     }
   };
 

@@ -7,22 +7,24 @@ const Login = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await api.post("/auth/login", form);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await api.post("/auth/login", form);
 
-      // Save user and token in localStorage
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      localStorage.setItem("token", response.data.token);
+    localStorage.setItem("user", JSON.stringify(response.data.user));
+    localStorage.setItem("token", response.data.token);
 
-      alert("✅ Login successful!");
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("Login Error:", error.response?.data || error.message);
-      alert("❌ Invalid credentials!");
-    }
-  };
+    alert("Login success");
+    navigate("/dashboard");
+  } catch (error) {
+    console.log(error.response?.data);
+    alert(error.response?.data?.message || "Invalid credentials");
+  }
+};
+
+
+
 
   return (
     <div className="auth-container">

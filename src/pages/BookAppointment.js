@@ -4,23 +4,6 @@ import "../styles/BookAppointment.css";
 
 const BookAppointment = () => {
   const [doctors, setDoctors] = useState([]);
-
-  useEffect(() => {
-    const fetchDoctors = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const { data } = await api.get("/doctors", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setDoctors(data);
-      } catch (error) {
-        console.error("❌ Error fetching doctors:", error.response?.data || error.message);
-        alert("❌ Failed to load doctors. Please login again.");
-      }
-    };
-    fetchDoctors();
-  }, []);
-
   const [form, setForm] = useState({
     doctorId: "",
     date: "",
@@ -28,31 +11,46 @@ const BookAppointment = () => {
     reason: "",
   });
 
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const { data } = await api.get("/doctors"); // token auto-attached
+        setDoctors(data);
+      } catch (error) {
+        console.error("❌ Error fetching doctors:", error.response?.data || error.message);
+        if (error.response?.status === 401) handleLogout();
+        else alert("❌ Failed to load doctors. Please login again.");
+      }
+    };
+    fetchDoctors();
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    alert("❌ Session expired. Please login again.");
+    window.location.href = "/login";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!token || !user?.id) {
-      alert("❌ You must login again.");
-      return;
-    }
+    if (!user?._id) return handleLogout(); // user missing → logout
 
     const appointmentData = {
       ...form,
-      patientId: user.id, // use user.id, not _id
+      patientId: user._id, // use _id
     };
 
     try {
-      await api.post("/appointments", appointmentData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await api.post("/appointments", appointmentData); // token auto-attached
       alert("✅ Appointment booked successfully");
       setForm({ doctorId: "", date: "", time: "", reason: "" });
     } catch (error) {
       console.error("❌ Booking error:", error.response?.data || error.message);
-      alert("❌ Booking failed");
+      if (error.response?.status === 401) handleLogout();
+      else alert("❌ Booking failed");
     }
   };
 
